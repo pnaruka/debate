@@ -26,7 +26,7 @@ const debateSchema = mongoose.Schema({
     {timestamps: true}
 );
 
-const DebateModel = mongoose.model('Chat',debateSchema);
+const DebateModel = mongoose.model('Debate',debateSchema);
 
 module.exports = {
     DebateModel

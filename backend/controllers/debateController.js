@@ -44,14 +44,26 @@ const getDebates = asyncHandler(async (req, res) => {
 })
 
 const addParticipant =  async(debateId, userId)=>{
+    const exists = await DebateModel.findOne({
+        _id: debateId,
+        participants: {
+          $elemMatch: {
+            $eq: userId
+          }
+        }
+      })
+
+    if(exists){
+        return exists;
+    }
+    
     const added = await DebateModel.findByIdAndUpdate(
         debateId,
         {
             $push: {participants: userId}
         },
         {new: true}
-    ).populate("users", "-password")
-     .populate("participants", "-password");
+    )
 
      if(!added){
         throw new Error("Could not add user");
