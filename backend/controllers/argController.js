@@ -28,7 +28,8 @@ const createArg = asyncHandler(async (req, res) => {
 });
 
 const getArgs = asyncHandler(async (req, res) => {
-    const {debateId} = req.body;
+    const {debateId} = req.query;
+    console.log(req.body);
     try {
         const args = await ArgumentModel.find({debate:debateId})
         .populate("participant", "-password");
