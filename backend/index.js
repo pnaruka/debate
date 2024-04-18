@@ -3,6 +3,7 @@ const express = require('express');
 const { default: mongoose } = require('mongoose');
 const cors = require('cors');
 const UserRouter = require('./routes/userRoutes');
+const DebateRouter = require('./routes/debateRoutes');
 
 configDotenv({path:'./.env'});
 const port = process.env.PORT || 5000;
@@ -13,6 +14,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/user',UserRouter);
+app.use('/debate',DebateRouter);
 
 app.get('/', (req,res)=>{
     return res.send("Hallo");
