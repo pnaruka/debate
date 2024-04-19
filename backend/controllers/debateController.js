@@ -16,7 +16,7 @@ const createDebate = asyncHandler(async (req, res) => {
     };
     try {
         const createdDebate = await DebateModel.create(debateData);
-        const fullDebate = await DebateModel.find({ _id: createdDebate._id })
+        const fullDebate = await DebateModel.findOne({ _id: createdDebate._id })
         .populate("participants", "-password")
         .populate("organiser","-password");
         return res.status(200).json(fullDebate);
@@ -37,6 +37,24 @@ const getDebates = asyncHandler(async (req, res) => {
         }
         
         return res.status(200).json(debates);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+
+})
+
+const getThisDebate = asyncHandler(async (req, res) => {
+    const {debateId} = req.query;
+    try {
+        const debate = await DebateModel.findOne({_id: debateId})
+        .populate("participants", "-password")
+        .populate("organiser","-password");
+
+        if (!debate) {
+            return res.status(204).send("No debate to show.");
+        }
+        
+        return res.status(200).json(debate);
     } catch (error) {
         return res.status(500).json(error);
     }
@@ -76,5 +94,6 @@ const addParticipant =  async(debateId, userId)=>{
 module.exports = {
     createDebate,
     getDebates,
-    addParticipant
+    addParticipant,
+    getThisDebate
 }

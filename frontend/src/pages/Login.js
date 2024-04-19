@@ -1,10 +1,18 @@
 import { Button, Container, FormControl, FormLabel, Heading, Input, InputGroup, InputRightElement, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { useLogin } from '../hooks/useLogin';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(true)
+    const {login} = useLogin();
+
+    const loginHandler = async()=>{
+        //console.log('here');
+        login({ user: { email: email, password: password } });
+    }
+
     return (
         <Container>
             <VStack spacing='5px'>
@@ -37,7 +45,7 @@ const Login = () => {
               colorScheme='blue'
               width="100%"
               style={{marginTop:15}}
-              onClick={()=>{console.log('Submitted')}}
+              onClick={loginHandler}
             >
                 Login
             </Button>

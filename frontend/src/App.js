@@ -8,24 +8,26 @@ import AllDebates from "./pages/AllDebates";
 import ThisDebate from "./pages/ThisDebate";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Navbar from "./components/Navbar";
 
 function App() {
   const user = useSelector(getUser);
   const dispatch = useDispatch()
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     dispatch(assignUser(readToken()));
     //console.log(user);
-  },[dispatch]);
+  }, [dispatch]);
 
   return (
     <div className="App">
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/debates" element={<AllDebates />} />
-        <Route path="/thisdebate" element={<ThisDebate />} />
-        <Route path="/signup" element={!user ? (<Signup />):(<Navigate to="/"/>)} />
-        <Route path="/login" element={!user?(<Login />):(<Navigate to="/"/>)} />
+        <Route path="/thisdebate/:id" element={<ThisDebate />} />
+        <Route path="/signup" element={!user ? (<Signup />) : (<Navigate to="/" />)} />
+        <Route path="/login" element={!user ? (<Login />) : (<Navigate to="/" />)} />
       </Routes>
     </div>
   );
