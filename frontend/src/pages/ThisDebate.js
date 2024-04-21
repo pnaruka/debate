@@ -45,6 +45,7 @@ const ThisDebate = () => {
 
   const createOpinion = async () => {
     createArg(user, content, opinionIn, currDebate._id);
+    setContent('');
   }
 
   return (
@@ -61,7 +62,7 @@ const ThisDebate = () => {
         </Container>
         : <></>}
       <Box>
-        <HStack mt="30px">
+        <HStack mt="30px" fontFamily="body">
           <Box w='200px' >
             <VStack
               divider={<StackDivider borderColor='gray.200' />}
@@ -70,9 +71,9 @@ const ThisDebate = () => {
             >
               {arg.favour && arg.favour.length > 0 ?
                 arg.favour.map((f) =>
-                  <Box bg='green.100' key={f._id}>
-                    <Text>{f.content}</Text>
-                    <Text>:{f.participant.name} </Text>
+                  <Box bg='green.100' borderRadius='lg' key={f._id}>
+                    <Text padding='5px'>{f.content}</Text>
+                    <Text bg='#C8A2C8'>:{f.participant.name} </Text>
                   </Box>
                 )
                 : <></>
@@ -88,9 +89,9 @@ const ThisDebate = () => {
             >
               {arg.against && arg.against.length > 0 ?
                 arg.against.map((a) =>
-                  <Box bg='yellow.100' key={a._id}>
-                    <Text>{a.content}</Text>
-                    <Text>:{a.participant.name} </Text>
+                  <Box bg='yellow.100' borderRadius='lg' key={a._id}>
+                    <Text padding='5px'>{a.content}</Text>
+                    <Text bg='#C8A2C8'>:{a.participant.name} </Text>
                   </Box>
                 )
                 : <></>
