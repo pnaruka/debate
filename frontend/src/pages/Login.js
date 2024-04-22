@@ -5,7 +5,7 @@ import { useLogin } from '../hooks/useLogin';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(true)
+    const [showPassword, setShowPassword] = useState(false)
     const {login} = useLogin();
 
     const loginHandler = async()=>{
