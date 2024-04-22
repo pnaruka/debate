@@ -11,7 +11,7 @@ const Navbar = () => {
 
     return (
       <Flex bg="blue.500" p={4} align="center">
-        <Box as="a" href="/" textDecoration="none" color="white">
+        <Box as="a" href="/debates" textDecoration="none" color="white">
         <Heading as="h1" size="md" color="white" mr={4}>
           Debate
         </Heading>
