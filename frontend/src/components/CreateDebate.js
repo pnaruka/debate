@@ -18,7 +18,7 @@ const CreateDebate = () => {
 
     return (
       <>
-        <Button onClick={onOpen}>Start Debate</Button>
+        <Button colorScheme='teal' onClick={onOpen}>Start Debate</Button>
   
         <Modal
           initialFocusRef={initialRef}
