@@ -1,4 +1,4 @@
-import { Box, Button, Container, FormControl, HStack, Heading, Select, Spacer, StackDivider, Text, Textarea, VStack } from '@chakra-ui/react'
+import { Box, Button, Container, FormControl, HStack, Heading, Select, Skeleton, Spacer, Textarea } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { appendArg, getArgs, getDebateInfo } from '../contexts_store/reducer/args'
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import { useCreateArg } from '../hooks/useCreateArg';
 import { useFetchArgs } from '../hooks/useFetchArgs';
 import { useParams } from 'react-router-dom';
 import { socketConnect } from '../utils/socketUtil';
+import Argument from '../components/Argument';
 
 
 const ThisDebate = () => {
@@ -18,7 +19,7 @@ const ThisDebate = () => {
   const [content, setContent] = useState('');
   const [opinionIn, setOpinionIn] = useState('FAVOUR');
   const { createArg } = useCreateArg();
-  const { fetchArgs } = useFetchArgs();
+  const { fetchArgs, isLoading } = useFetchArgs();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const ThisDebate = () => {
   }, [id])
 
   useEffect(() => {
-    
+
     if (id) {
       const socket = socketConnect();
       socket.emit('joinDebate', id);
@@ -39,7 +40,7 @@ const ThisDebate = () => {
       });
       return () => {
         socket.disconnect();
-    };
+      };
     }
   }, [id])
 
@@ -60,48 +61,32 @@ const ThisDebate = () => {
           <Heading mt='50px'>{currDebate.debateName}</Heading>
           <Heading size='md'>started by: {currDebate.organiser ? currDebate.organiser.name : "Unknown"}</Heading>
         </Container>
-        : <></>}
+        : <></>
+      }
       <Box>
-        <HStack mt="30px" fontFamily="body">
-          <Box w='200px' >
-            <VStack
-              divider={<StackDivider borderColor='gray.200' />}
-              spacing={4}
-              align='stretch'
-            >
-              {arg.favour && arg.favour.length > 0 ?
-                arg.favour.map((f) =>
-                  <Box bg='green.100' borderRadius='lg' key={f._id}>
-                    <Text padding='5px'>{f.content}</Text>
-                    <Text bg='#C8A2C8'>:{f.participant.name} </Text>
-                  </Box>
-                )
-                : <></>
-              }
-            </VStack>
-          </Box>
-          <Spacer />
-          <Box w='200px' >
-            <VStack
-              divider={<StackDivider borderColor='gray.200' />}
-              spacing={4}
-              align='stretch'
-            >
-              {arg.against && arg.against.length > 0 ?
-                arg.against.map((a) =>
-                  <Box bg='yellow.100' borderRadius='lg' key={a._id}>
-                    <Text padding='5px'>{a.content}</Text>
-                    <Text bg='#C8A2C8'>:{a.participant.name} </Text>
-                  </Box>
-                )
-                : <></>
-              }
-            </VStack>
-          </Box>
-        </HStack>
+        {
+          isLoading ? 
+          <Skeleton/>
+        :
+        <HStack mt="30px" fontFamily="args">
+        {
+          arg.favour && arg.favour.length > 0 ?
+          <Argument args={arg.favour} opinion="FAVOUR"/>
+          :
+          <></>
+        }
+        <Spacer />
+        {
+          arg.favour && arg.favour.length > 0 ?
+          <Argument args={arg.against} opinion="AGAINST"/>
+          :
+          <></>
+        }
+      </HStack>
+        }
       </Box>
       {user ?
-        <Box mt="50px">
+        <Box mt="50px" mb="30px">
           <HStack spacing='5px'>
             <FormControl id='content' isRequired>
               <Textarea
