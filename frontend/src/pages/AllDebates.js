@@ -23,7 +23,7 @@ const AllDebates = () => {
   }
 
   return (
-    <Container maxW='md'>
+    <Container maxW='md' mt="10px">
       {user ?
         <CreateDebate/>
         :
