@@ -19,8 +19,7 @@ export const useLogin = ()=>{
         })
         .catch((error)=>{
             setIsLoading(false);
-            setError(error.response.data.message);
-            //console.log(error);
+            setError(error.response.data);
         });
         if(response)
         localStorage.setItem('user-auth',JSON.stringify(response));

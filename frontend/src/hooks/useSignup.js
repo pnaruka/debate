@@ -19,8 +19,7 @@ export const useSignup = ()=>{
         })
         .catch((error)=>{
             setIsLoading(false);
-            setError(error.response.data.message);
-            //console.log(error);
+            setError(error.response.data);
         });
         //console.log(response);
         if(response)
