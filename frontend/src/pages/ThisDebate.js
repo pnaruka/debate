@@ -95,7 +95,7 @@ const ThisDebate = () => {
                 placeholder='Express your opinion...' />
             </FormControl>
             <FormControl id='opinion'>
-              <Select value={opinionIn} onChange={(e) => { setOpinionIn(e.target.value) }} >
+              <Select bg={opinionIn === 'FAVOUR' ? 'green.100' : "yellow.100"} value={opinionIn} onChange={(e) => { setOpinionIn(e.target.value) }} >
                 <option value='FAVOUR'>FAVOUR</option>
                 <option value='AGAINST'>AGAINST</option>
               </Select>
