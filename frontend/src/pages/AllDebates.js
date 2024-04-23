@@ -23,14 +23,14 @@ const AllDebates = () => {
   }
 
   return (
-    <Container maxW='md' mt="10px">
+    <Container maxW='md' mt="10px" mb="10px">
       {user ?
         <CreateDebate/>
         :
         <GuestHeader />
       }
       <Heading mt='10px'>Explore debates</Heading>
-      <SimpleGrid mt='50px' spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
+      <SimpleGrid mt='30px' spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>
         {debates.length > 0 ?
           debates.map((db) =>
             <Card key={db._id}>
