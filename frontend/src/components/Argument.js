@@ -1,15 +1,14 @@
-import { Box, SimpleGrid, StackDivider, VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import RatingStrip from './RatingStrip'
+import { Box, SimpleGrid} from '@chakra-ui/react'
+import React from 'react'
 import SingleArgument from './SingleArgument';
 
 const Argument = ({ args, opinion }) => {
-  const [showRating, setShowRating] = useState(false);
+
 
   return (
     <Box
       maxW="400px"
-      maxH="400px"  
+      maxH="400px"
       overflowY="auto"
       borderWidth="1px" 
       borderColor="gray.200" 

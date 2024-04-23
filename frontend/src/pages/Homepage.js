@@ -8,9 +8,12 @@ const Homepage = () => {
 
   return (
     <Box textAlign="center" p={10}>
+      <Box>
       <Center>
         <Image src="/debateHomepage.jpg" alt="homepageimg" h='400px' w='800px' />
       </Center>
+      </Box>
+      <Box>
       <Heading as="h1" size="xl" mt={6} mb={4}>
         Welcome to Debate
       </Heading>
@@ -24,6 +27,7 @@ const Homepage = () => {
           </Text>
         </Box>
       </Center>
+      </Box>
       <Box>
         <Flex justify="center">
           <Box
