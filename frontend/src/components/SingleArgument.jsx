@@ -1,16 +1,19 @@
 import { Box, Text } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import RatingStrip from './RatingStrip';
+import { getUser } from '../contexts_store/reducer/user';
+import { useSelector } from 'react-redux';
 
 const SingleArgument = ({arg, opinion}) => {
     const [showRating, setShowRating] = useState(false);
+    const user = useSelector(getUser);
     
     return (
         <Box
             onMouseDownCapture={() => setShowRating(true)}
             onMouseLeave={() => setShowRating(false)}>
             {
-                showRating ?
+                user && showRating ?
                     <RatingStrip />
                     : <></>
             }
