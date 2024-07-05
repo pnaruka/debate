@@ -55,7 +55,7 @@ Access the application through your web browser at `http://localhost:3000`
 `Landing Page`: ![Landing Page](readMe_screenshots/landingPage.png) \
 `Home`: ![Home](readMe_screenshots/home.png) \
 `Create Debate`: ![Create Debate](readMe_screenshots/createDebate.png) \
-`Debate View`: ![Blog View](readMe_screenshots/debateView.png) \
+`Debate View`: ![Blog View](readMe_screenshots/debateView.png)
 
 ## Contributing <a name="contributing"></a>:
 Contributions are welcome! Here's how you can contribute:\
