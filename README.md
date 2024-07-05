@@ -20,10 +20,10 @@ This project's aim is to provide a platform for people to debate over arguments,
 
 ### Frontend
 `public`: Holds user image uploads and default images\
-`contexts_store`: Redux store definition
-`hooks`: Hooks for API calls and redux store read & write
-`pages`: Client side pages
-`components`: smaller react components to be used within pages or other components
+`contexts_store`: Redux store definition\
+`hooks`: Hooks for API calls and redux store read & write\
+`pages`: Client side pages\
+`components`: smaller react components to be used within pages or other components\
 `utils`: Functions to read locally saved auth token and create socket connection
 
 ## Installation <a name="installation"></a>:
@@ -32,7 +32,7 @@ To install the project, follow these steps:
 Clone the repository: `https://github.com/pnaruka/debate`\
 Navigate to the project directory: `cd blog_app`
 
-Install dependencies: 
+Install dependencies:\
 backend:
 `cd backend`
 `npm install`
@@ -45,8 +45,8 @@ frontend:
 After installation, you can use the project as follows:
 
 Run the project: `cd backend` `npm start`\
-open another terminal: `cd frontend` `npm start`
-Access the application through your web browser at `http://localhost:3000` \
+open another terminal: `cd frontend` `npm start`\
+Access the application through your web browser at `http://localhost:3000` 
 
 ## Contributing <a name="contributing"></a>:
 Contributions are welcome! Here's how you can contribute:\
